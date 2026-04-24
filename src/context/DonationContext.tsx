@@ -90,7 +90,9 @@ export const DonationProvider = ({ children }: { children: React.ReactNode }) =>
     const donationsChannel = supabase
       .channel("global_donations")
       .on("postgres_changes", { event: "INSERT", schema: "public", table: "donations" }, (payload) => {
-        const d = payload.new;
+        const d = payload.new as { id: string; program_slug: string; donor_name: string; amount: number; is_anonymous: boolean; created_at: string };
+        if (!d) return;
+        
         const newDonation: Donation = {
           id: d.id,
           programSlug: d.program_slug,
@@ -106,7 +108,9 @@ export const DonationProvider = ({ children }: { children: React.ReactNode }) =>
     const overridesChannel = supabase
       .channel("global_overrides")
       .on("postgres_changes", { event: "*", schema: "public", table: "program_overrides" }, (payload) => {
-        const o = payload.new;
+        const o = payload.new as { program_slug: string; total_raised: number };
+        if (!o) return;
+        
         setPrograms(prev => prev.map(p => {
           if (p.slug === o.program_slug) {
             // Find initial raised amount from data
