@@ -1,34 +1,31 @@
-import { MessageCircle, Linkedin, Twitter } from "lucide-react";
-import { notFound } from "next/navigation";
+"use client";
+
+import { MessageCircle, Share2, Send } from "lucide-react";
+import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
+import React from "react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Heading } from "@/components/ui/Heading";
 import { Button } from "@/components/ui/Button";
 import { DonationBox } from "@/components/features/DonationBox";
-import { programs } from "@/data/programs";
+import { DonorsList } from "@/components/features/DonorsList";
+import { useDonation } from "@/context/DonationContext";
 
-interface ProgramDetailPageProps {
-  params: Promise<{ slug: string }>;
-}
-
-export async function generateStaticParams() {
-  return programs.map((program) => ({
-    slug: program.slug,
-  }));
-}
-
-export default async function ProgramDetailPage({ params }: ProgramDetailPageProps) {
-  const { slug } = await params;
+export default function ProgramDetailPage() {
+  const { slug } = useParams();
+  const { programs, donations } = useDonation();
+  
   const program = programs.find((p) => p.slug === slug);
 
   if (!program) {
-    notFound();
+    return notFound();
   }
 
+  const programDonations = donations.filter(d => d.programSlug === program.slug);
   const progress = Math.min(Math.round((program.raised / program.goal) * 100), 100);
-  const donorsCount = Math.floor(program.raised / 42) + 12; // Mock calculation
-  const daysLeft = 12; // Mock value
+  const donorsCount = 369 + programDonations.length; // 369 is the baseline from your screenshot
+  const daysLeft = 12;
 
   return (
     <>
@@ -98,13 +95,13 @@ export default async function ProgramDetailPage({ params }: ProgramDetailPagePro
                       },
                       { 
                         name: "LinkedIn", 
-                        icon: <Linkedin className="w-5 h-5" />, 
+                        icon: <Share2 className="w-5 h-5" />, 
                         color: "hover:bg-blue-600 hover:text-white border-blue-200 text-blue-700", 
                         href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://givehope.example/programs/" + program.slug)}` 
                       },
                       { 
                         name: "X", 
-                        icon: <Twitter className="w-5 h-5" />, 
+                        icon: <Send className="w-5 h-5" />, 
                         color: "hover:bg-black hover:text-white border-gray-300 text-gray-700", 
                         href: `https://twitter.com/intent/tweet?text=I&apos;m inspired by the ${program.title} program by @GiveHope. Real transparency, real impact. Let&apos;s make a difference together! &url=${encodeURIComponent("https://givehope.example/programs/" + program.slug)}` 
                       }
@@ -161,6 +158,10 @@ export default async function ProgramDetailPage({ params }: ProgramDetailPagePro
                 <p className="text-sm font-bold text-primary leading-relaxed">
                   Your donation is 100% tax-deductible. We provide full receipting and impact tracking for every gift.
                 </p>
+              </div>
+
+              <div className="rounded-2xl border border-border bg-white p-8 shadow-md">
+                <DonorsList programSlug={program.slug} />
               </div>
             </div>
           </div>

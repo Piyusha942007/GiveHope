@@ -16,6 +16,7 @@ const SuccessContent = () => {
   
   const amount = searchParams.get("amount") || "25";
   const program = searchParams.get("program") || "GiveHope";
+  const donor = searchParams.get("donor") || "Kind Soul";
 
   useEffect(() => {
     const duration = 3 * 1000;
@@ -62,7 +63,7 @@ const SuccessContent = () => {
         </svg>
       </div>
       
-      <Heading level={1} className="mb-4">Donation Successful!</Heading>
+      <Heading level={1} className="mb-4">You&apos;re a Hero, {donor}!</Heading>
       <p className="mb-8 text-lg text-gray-600">
         Thank you for your generous gift of <span className="font-bold text-primary">${amount}</span> to <span className="font-bold">{program}</span>.
       </p>

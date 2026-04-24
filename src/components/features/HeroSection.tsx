@@ -32,7 +32,7 @@ export const HeroSection = () => {
                   words={["hope.", "change.", "futures.", "lives."]}
                   typingSpeed={100}
                   deletingSpeed={60}
-                  pauseDuration={2500}
+                  pauseDuration={1000}
                 />
               </span>
             </h1>
