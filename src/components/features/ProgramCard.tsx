@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Link from "next/link";
 import { Program } from "@/data/programs";
 import { Button } from "@/components/ui/Button";
+import { Twitter } from "lucide-react";
 
 interface ProgramCardProps {
   program: Program;
@@ -118,15 +119,30 @@ export const ProgramCard = ({ program }: ProgramCardProps) => {
           </div>
         )}
 
-        <div className="absolute top-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-gray-800 backdrop-blur-sm shadow-sm">
-          {program.category}
+        <div className="absolute top-4 right-4 flex gap-2">
+          <div className="rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-gray-800 backdrop-blur-sm shadow-sm">
+            {program.category}
+          </div>
+          <Link href={`/programs/${program.slug}#share`} onClick={(e) => e.stopPropagation()}>
+            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-600 shadow-sm transition-colors hover:text-primary backdrop-blur-sm">
+              <Twitter className="h-3.5 w-3.5" />
+            </div>
+          </Link>
         </div>
         
         {/* Recent Donation Mock */}
-        <div className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold text-gray-800 backdrop-blur-md shadow-sm flex items-center gap-2 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-          <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          Rahul donated $50
-        </div>
+        {(() => {
+          const names = ["Rahul", "Sarah", "Chen", "Elena", "Marcus", "Priyanka", "David", "Aisha"];
+          const amounts = [10, 25, 50, 100, 250];
+          const randomName = names[Math.floor((program.id.charCodeAt(0) + program.id.length) % names.length)];
+          const randomAmount = amounts[Math.floor((program.id.charCodeAt(0) + program.id.length) % amounts.length)];
+          return (
+            <div className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold text-gray-800 backdrop-blur-md shadow-sm flex items-center gap-2 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+              {randomName} donated ${randomAmount}
+            </div>
+          );
+        })()}
       </div>
 
       <div className="p-6 md:p-8">

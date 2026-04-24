@@ -47,7 +47,7 @@ export default function DonatePage() {
 
           {/* Right Column - The Form */}
           <div className="lg:col-span-5 relative w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
-             <div className="animate-in fade-in slide-in-from-right-8 duration-1000 delay-300 fill-mode-both relative z-10">
+             <div className="transition-all duration-1000 delay-300 relative z-10">
                <Suspense fallback={<div className="h-96 rounded-2xl bg-white shadow-xl animate-pulse" />}>
                  <DonatePageClient />
                </Suspense>
