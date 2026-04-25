@@ -91,32 +91,34 @@ export default function ProgramDetailPage() {
                         name: "WhatsApp", 
                         icon: <MessageCircle className="w-5 h-5" />, 
                         color: "hover:bg-green-500 hover:text-white border-green-200 text-green-700", 
-                        href: `https://wa.me/?text=I was deeply moved by the ${program.title} initiative on GiveHope. They are doing incredible, verified work on the ground, and I believe we can help them reach their goal together. Take a moment to see the impact they are making: ${encodeURIComponent("https://givehope.example/programs/" + program.slug)}` 
+                        getHref: (origin: string) => `https://wa.me/?text=${encodeURIComponent(`I was deeply moved by the ${program.title} initiative on GiveHope. They are doing incredible, verified work on the ground, and I believe we can help them reach their goal together. Take a moment to see the impact: ${origin}/programs/${program.slug}`)}`
                       },
                       { 
                         name: "LinkedIn", 
                         icon: <Share2 className="w-5 h-5" />, 
                         color: "hover:bg-blue-600 hover:text-white border-blue-200 text-blue-700", 
-                        href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent("https://givehope.example/programs/" + program.slug)}` 
+                        getHref: (origin: string) => `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${origin}/programs/${program.slug}`)}` 
                       },
                       { 
                         name: "X", 
                         icon: <Send className="w-5 h-5" />, 
                         color: "hover:bg-black hover:text-white border-gray-300 text-gray-700", 
-                        href: `https://twitter.com/intent/tweet?text=I&apos;m inspired by the ${program.title} program by @GiveHope. Real transparency, real impact. Let&apos;s make a difference together! &url=${encodeURIComponent("https://givehope.example/programs/" + program.slug)}` 
+                        getHref: (origin: string) => `https://twitter.com/intent/tweet?text=${encodeURIComponent(`I'm inspired by the ${program.title} program on @GiveHope. Real transparency, real impact. Let's make a difference together!`)}&url=${encodeURIComponent(`${origin}/programs/${program.slug}`)}` 
                       }
                     ].map((platform) => (
-                      <a
+                      <button
                         key={platform.name}
-                        href={platform.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        onClick={() => {
+                          const origin = typeof window !== 'undefined' ? window.location.origin : 'https://givehope-iota.vercel.app';
+                          window.open(platform.getHref(origin), '_blank', 'noopener,noreferrer');
+                        }}
                         title={`Share on ${platform.name}`}
+                        className="bg-transparent border-none p-0 cursor-pointer"
                       >
                         <Button variant="outline" size="icon" className={`bg-white transition-all duration-300 rounded-full shadow-sm ${platform.color}`}>
                           {platform.icon}
                         </Button>
-                      </a>
+                      </button>
                     ))}
                   </div>
                 </div>

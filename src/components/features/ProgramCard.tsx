@@ -126,11 +126,28 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
           <div className="rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold uppercase tracking-widest text-gray-800 backdrop-blur-sm shadow-sm">
             {program.category}
           </div>
-          <Link href={`/programs/${program.slug}#share`} onClick={(e) => e.stopPropagation()}>
-            <div className="flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-600 shadow-sm transition-colors hover:text-primary backdrop-blur-sm">
-              <Share2 className="h-3.5 w-3.5" />
-            </div>
-          </Link>
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              e.preventDefault();
+              const shareData = {
+                title: `GiveHope: ${program.title}`,
+                text: `I'm supporting the "${program.title}" initiative on GiveHope. Every contribution creates a real, verified impact. Join me in making a difference! 🌍✨`,
+                url: `${window.location.origin}/programs/${program.slug}`,
+              };
+
+              if (navigator.share) {
+                navigator.share(shareData).catch(() => {});
+              } else {
+                navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+                alert("Link copied to clipboard!");
+              }
+            }}
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-white/95 text-gray-600 shadow-sm transition-colors hover:text-primary backdrop-blur-sm border-none cursor-pointer"
+            title="Share this program"
+          >
+            <Share2 className="h-3.5 w-3.5" />
+          </button>
         </div>
         
         {/* Recent Donation Mock */}
