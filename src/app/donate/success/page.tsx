@@ -105,19 +105,19 @@ const SuccessContent = () => {
               getHref: (origin: string) => `https://twitter.com/intent/tweet?text=${encodeURIComponent(`I'm proud to support ${program} with a donation via @GiveHope. Their transparency shows exactly where the money goes. Join me!`)}&url=${encodeURIComponent(origin)}`
             }
           ].map((platform) => (
-            <button
+            <Button
               key={platform.name}
+              variant="outline" 
+              size="icon" 
+              className={`bg-white transition-all duration-300 rounded-full shadow-sm ${platform.color}`}
               onClick={() => {
                 const origin = typeof window !== 'undefined' ? window.location.origin : 'https://givehope-iota.vercel.app';
                 window.open(platform.getHref(origin), '_blank', 'noopener,noreferrer');
               }}
               title={`Share on ${platform.name}`}
-              className="bg-transparent border-none p-0 cursor-pointer"
             >
-              <Button variant="outline" size="icon" className={`bg-white transition-all duration-300 rounded-full shadow-sm ${platform.color}`}>
-                {platform.icon}
-              </Button>
-            </button>
+              {platform.icon}
+            </Button>
           ))}
         </div>
       </div>

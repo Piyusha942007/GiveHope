@@ -68,7 +68,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Overlaid Card (Subscript style) */}
-            <div className="absolute -bottom-14 -right-6 sm:-right-14 z-20 animate-in slide-in-from-right-8 fade-in duration-1000 delay-300 fill-mode-both">
+            <div className="absolute -bottom-14 -right-6 sm:-right-14 z-20">
               <div className="transform transition-transform duration-500 hover:scale-[1.02]">
                 <FloatingCard />
               </div>

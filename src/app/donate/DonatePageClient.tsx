@@ -12,6 +12,8 @@ export default function DonatePageClient() {
   const selectedProgram = programs.find((p) => p.slug === programSlug);
 
   return (
-    <DonationBox programName={selectedProgram?.title} />
+    <DonationBox 
+      programName={selectedProgram?.title || (programSlug === "clean-water-initiative" ? "Clean Water Initiative" : undefined)} 
+    />
   );
 }

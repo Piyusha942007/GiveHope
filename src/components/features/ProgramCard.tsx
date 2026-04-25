@@ -150,13 +150,14 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
           </button>
         </div>
         
-        {/* Recent Donation Mock */}
+        {/* Recent Donation Mock - Always visible on mobile, hover on desktop */}
         {(() => {
           const lastDonation = donations.find(d => d.programSlug === program.slug);
+          const badgeClass = "absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold text-gray-800 backdrop-blur-md shadow-sm flex items-center gap-2 transition-all duration-500 delay-100 sm:translate-y-2 sm:opacity-0 sm:group-hover:translate-y-0 sm:group-hover:opacity-100 opacity-100 translate-y-0";
           
           if (lastDonation) {
             return (
-              <div className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold text-gray-800 backdrop-blur-md shadow-sm flex items-center gap-2 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+              <div className={badgeClass}>
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
                 {lastDonation.donorName} donated ${lastDonation.amount}
               </div>
@@ -168,7 +169,7 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
           const randomName = names[Math.floor((program.id.charCodeAt(0) + program.id.length) % names.length)];
           const randomAmount = amounts[Math.floor((program.id.charCodeAt(0) + program.id.length) % amounts.length)];
           return (
-            <div className="absolute bottom-4 left-4 rounded-full bg-white/95 px-3 py-1.5 text-[11px] font-bold text-gray-800 backdrop-blur-md shadow-sm flex items-center gap-2 translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+            <div className={badgeClass}>
               <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
               {randomName} donated ${randomAmount}
             </div>
@@ -176,7 +177,7 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
         })()}
       </div>
 
-      <div className="p-6 md:p-8">
+      <div className="p-6 md:p-8 active:scale-[0.99] transition-transform duration-200">
         <h3 className="mb-1 text-xl font-black text-gray-900 leading-tight">
           <Link href={`/programs/${program.slug}`} className="hover:underline decoration-gray-300 underline-offset-4">
             {program.title}
