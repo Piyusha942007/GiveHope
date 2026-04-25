@@ -10,7 +10,7 @@ export const LiveDonationTicker = () => {
   // Get latest 3 donations
   const recentDonations = donations.slice(0, 3);
 
-  const formatTimeAgo = (timestamp: string) => {
+  const formatTimeAgo = (timestamp: string | Date) => {
     const seconds = Math.floor((new Date().getTime() - new Date(timestamp).getTime()) / 1000);
     
     if (seconds < 60) return "just now";
