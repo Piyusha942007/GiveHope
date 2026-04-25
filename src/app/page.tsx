@@ -29,7 +29,7 @@ export default function Home() {
               { label: "Verified NGOs", value: `${platformStats.verifiedNGOs}`, icon: <Handshake className="w-8 h-8 text-primary" /> },
               { label: "Countries Reached", value: platformStats.countriesReached, icon: <MapPin className="w-8 h-8 text-primary" /> },
             ].map((stat) => (
-              <div key={stat.label} className="group relative rounded-2xl border border-border bg-white p-8 transition-all hover:shadow-xl hover:-translate-y-1">
+              <div key={stat.label} className="card-hover relative rounded-2xl border border-border bg-white p-8 overflow-hidden group">
                 <div className="mb-4">{stat.icon}</div>
                 <div className="text-3xl font-black text-gray-900 mb-1 group-hover:text-primary transition-colors">{stat.value}</div>
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{stat.label}</div>
@@ -65,7 +65,7 @@ export default function Home() {
             ].map((item, i) => (
               <div 
                 key={item.step} 
-                className="relative z-10 bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl border border-border transition-all duration-500 group hover:-translate-y-2 animate-in fade-in slide-in-from-bottom-8 fill-mode-both"
+                className="card-hover relative z-10 bg-white rounded-2xl p-8 border border-border group animate-in fade-in slide-in-from-bottom-8 fill-mode-both"
                 style={{ animationDelay: `${i * 150}ms` }}
               >
                 <div className="flex items-center justify-between mb-6">

@@ -10,8 +10,8 @@ import { FloatingCard } from "./FloatingCard";
 export const HeroSection = () => {
   return (
     <Section className="relative bg-muted/30 overflow-hidden" spaced={false}>
-      <Container className="py-20 md:py-32 relative z-10">
-        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
+      <Container className="pt-28 pb-20 md:pt-40 md:pb-32 relative z-10">
+        <div className="grid grid-cols-1 items-center gap-12 lg:gap-16 lg:grid-cols-2">
           {/* Left — Text */}
           <div className="text-center lg:text-left">
             <div className="mb-8 inline-flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 text-sm font-bold text-primary border border-green-100/50 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-700">
@@ -68,7 +68,7 @@ export const HeroSection = () => {
             </div>
 
             {/* Overlaid Card (Subscript style) */}
-            <div className="absolute -bottom-14 -right-6 sm:-right-14 z-20">
+            <div className="absolute -bottom-10 -right-2 sm:-bottom-14 sm:-right-14 z-20 scale-90 sm:scale-100 origin-bottom-right">
               <div className="transform transition-transform duration-500 hover:scale-[1.02]">
                 <FloatingCard />
               </div>

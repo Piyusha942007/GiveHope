@@ -81,7 +81,7 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
   return (
     <div 
       ref={containerRef}
-      className="group overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-gray-200"
+      className="card-hover group overflow-hidden rounded-2xl border border-border bg-white"
     >
       <div
         className="relative aspect-[4/3] overflow-hidden cursor-pointer bg-gray-100"

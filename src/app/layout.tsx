@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { DonationProvider } from "@/context/DonationContext";
+import LayoutClient from "./LayoutClient";
 
 export default function RootLayout({
   children,
@@ -51,9 +52,7 @@ export default function RootLayout({
       <body className="font-sans min-h-screen flex flex-col bg-white">
         <DonationProvider>
           <Navbar />
-          <main className="flex-grow flex flex-col page-fade-in">
-            {children}
-          </main>
+          <LayoutClient>{children}</LayoutClient>
           <Footer />
         </DonationProvider>
       </body>
