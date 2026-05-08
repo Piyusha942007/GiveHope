@@ -19,6 +19,7 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isVideoReady, setIsVideoReady] = useState(false);
 
   useEffect(() => {
     if (!program.video) return;
@@ -70,10 +71,14 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    // If not visible (via observer), we'd already be paused. 
-    // But for desktop hover, we want it to keep playing if it was auto-playing or just let the observer handle it.
-    // However, the user said "as they scroll the page the video stops", so we prioritize observer for scroll.
-    // For hover, let's keep it simple: hover starts it immediately.
+    // On desktop, we want to stop playing when hover ends if we're not using the auto-play scroll feature
+    if (!window.matchMedia("(pointer: coarse)").matches) {
+      if (videoRef.current) {
+        videoRef.current.pause();
+        setIsPlaying(false);
+        setIsVideoReady(false);
+      }
+    }
   };
 
   const showVideo = isPlaying || isHovered;
@@ -93,7 +98,7 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
           src={program.image}
           alt={program.title}
           className={`absolute inset-0 h-full w-full object-cover transition-all duration-700 ${
-            showVideo ? "opacity-0 scale-105" : "opacity-100 scale-100"
+            showVideo && isVideoReady ? "opacity-0 scale-105" : "opacity-100 scale-100"
           }`}
         />
 
@@ -106,8 +111,11 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
             loop
             playsInline
             preload="metadata"
+            onPlaying={() => setIsVideoReady(true)}
+            onWaiting={() => setIsVideoReady(false)}
+            onSeeked={() => setIsVideoReady(true)}
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${
-              showVideo ? "opacity-100" : "opacity-0"
+              showVideo && isVideoReady ? "opacity-100" : "opacity-0"
             }`}
           />
         )}
