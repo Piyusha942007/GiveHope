@@ -64,16 +64,16 @@ export default function ProgramDetailPage() {
                     {program.description}
                   </p>
                   <p>
-                    Every year, thousands of people in the target region face critical challenges due to the lack of sustainable resources. This program aims to build the necessary infrastructure to change that narrative forever. We don&apos;t just provide a one-time fix; we work with local leaders to ensure long-term maintenance and community ownership.
+                    Every year, thousands of people in the target region face critical challenges due to the lack of sustainable resources. This program aims to build the necessary infrastructure to change that narrative forever. We don't just provide a one-time fix; we work with local leaders to ensure long-term maintenance and community ownership.
                   </p>
                   <p>
                     By donating today, you are directly contributing to the purchase of materials, the hiring of local labor, and the training of community managers. Your impact is measurable, verified, and reported back to you every step of the way.
                   </p>
                   <blockquote className="border-l-4 border-primary pl-6 py-2 italic font-medium text-gray-800 text-xl">
-                    &quot;This initiative isn&apos;t just about resources; it&apos;s about restoring dignity and hope to a community that has been overlooked for too long.&quot;
+                    &quot;This initiative isn't just about resources; it's about restoring dignity and hope to a community that has been overlooked for too long.&quot;
                   </blockquote>
                   <p>
-                    Join us in making this vision a reality. We&apos;ve already seen incredible progress, but we need your help to reach the finish line. Every contribution, no matter how small, brings us one step closer to our goal.
+                    Join us in making this vision a reality. We've already seen incredible progress, but we need your help to reach the finish line. Every contribution, no matter how small, brings us one step closer to our goal.
                   </p>
                 </div>
               </div>

@@ -208,9 +208,11 @@ export const ProgramCard = ({ program: initialProgram }: ProgramCardProps) => {
           </div>
           <div className="h-2.5 w-full overflow-hidden rounded-full bg-gray-100">
             <div
-              className="h-full bg-primary transition-all duration-1000 ease-out"
+              className="h-full bg-primary transition-all duration-1000 ease-out relative overflow-hidden"
               style={{ width: `${progress}%` }}
-            />
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" style={{ backgroundSize: '200% 100%' }} />
+            </div>
           </div>
         </div>
 

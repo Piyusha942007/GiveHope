@@ -11,6 +11,8 @@ import { HeroSection } from "@/components/features/HeroSection";
 import { useDonation } from "@/context/DonationContext";
 import { CircleDollarSign, Globe, Handshake, MapPin, Search, CreditCard, TrendingUp } from "lucide-react";
 
+import { CountUp } from "@/components/ui/CountUp";
+
 export default function Home() {
   const { programs, platformStats } = useDonation();
 
@@ -24,14 +26,16 @@ export default function Home() {
         <Container>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { label: "Funds Channelled", value: `$${(platformStats.fundsChannelled / 1000000).toFixed(1)}M`, icon: <CircleDollarSign className="w-8 h-8 text-primary" /> },
-              { label: "Lives Impacted", value: `${(platformStats.livesImpacted / 1000).toFixed(0)}k+`, icon: <Globe className="w-8 h-8 text-primary" /> },
-              { label: "Verified NGOs", value: `${platformStats.verifiedNGOs}`, icon: <Handshake className="w-8 h-8 text-primary" /> },
-              { label: "Countries Reached", value: platformStats.countriesReached, icon: <MapPin className="w-8 h-8 text-primary" /> },
+              { label: "Funds Channelled", end: platformStats.fundsChannelled / 1000000, prefix: "$", suffix: "M", decimals: 1, icon: <CircleDollarSign className="w-8 h-8 text-primary" /> },
+              { label: "Lives Impacted", end: platformStats.livesImpacted / 1000, suffix: "k+", decimals: 0, icon: <Globe className="w-8 h-8 text-primary" /> },
+              { label: "Verified NGOs", end: platformStats.verifiedNGOs, decimals: 0, icon: <Handshake className="w-8 h-8 text-primary" /> },
+              { label: "Countries Reached", end: platformStats.countriesReached, decimals: 0, icon: <MapPin className="w-8 h-8 text-primary" /> },
             ].map((stat) => (
               <div key={stat.label} className="card-hover relative rounded-2xl border border-border bg-white p-8 overflow-hidden group">
                 <div className="mb-4">{stat.icon}</div>
-                <div className="text-3xl font-black text-gray-900 mb-1 group-hover:text-primary transition-colors">{stat.value}</div>
+                <div className="text-3xl font-black text-gray-900 mb-1 group-hover:text-primary transition-colors">
+                  <CountUp end={stat.end} decimals={stat.decimals} prefix={stat.prefix} suffix={stat.suffix} />
+                </div>
                 <div className="text-xs font-bold text-gray-400 uppercase tracking-widest">{stat.label}</div>
                 <div className="absolute top-0 right-0 h-16 w-16 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary/5 blur-xl group-hover:bg-primary/10 transition-all" />
               </div>
@@ -119,7 +123,7 @@ export default function Home() {
             <span className="mb-4 inline-block text-sm font-bold uppercase tracking-widest text-primary">Testimonials</span>
             <Heading level={2} className="mb-4">What Our Donors Say</Heading>
             <p className="text-gray-600">
-              Join a global community of over 12,000 donors who trust GiveHope to deliver impact where it&apos;s needed most.
+              Join a global community of over 12,000 donors who trust GiveHope to deliver impact where it's needed most.
             </p>
           </div>
 
@@ -140,7 +144,7 @@ export default function Home() {
               {
                 name: "Marcus Thorne",
                 location: "London, UK",
-                quote: "I&apos;ve been a recurring donor for 2 years now. GiveHope makes me feel connected to the communities they serve.",
+                quote: "I've been a recurring donor for 2 years now. GiveHope makes me feel connected to the communities they serve.",
                 avatar: "https://i.pravatar.cc/150?u=marcus"
               }
             ].map((testimonial) => (

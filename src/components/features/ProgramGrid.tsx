@@ -12,8 +12,14 @@ export const ProgramGrid = ({ programs, limit }: ProgramGridProps) => {
 
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 md:gap-8">
-      {displayedPrograms.map((program) => (
-        <ProgramCard key={program.id} program={program} />
+      {displayedPrograms.map((program, i) => (
+        <div 
+          key={program.id} 
+          className="animate-in fade-in slide-in-from-bottom-8 duration-700 fill-mode-both"
+          style={{ animationDelay: `${i * 100}ms` }}
+        >
+          <ProgramCard program={program} />
+        </div>
       ))}
     </div>
   );

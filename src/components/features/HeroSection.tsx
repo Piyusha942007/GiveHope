@@ -38,7 +38,7 @@ export const HeroSection = () => {
             </h1>
 
             <p className="mx-auto lg:mx-0 mb-12 max-w-xl text-lg md:text-xl text-gray-600 leading-relaxed font-medium">
-              GiveHope is the world&apos;s most trusted frictionless giving platform. We ensure your donation goes directly to verified causes with 100% transparency.
+              GiveHope is the world's most trusted frictionless giving platform. We ensure your donation goes directly to verified causes with 100% transparency.
             </p>
 
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4">

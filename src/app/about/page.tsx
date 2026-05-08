@@ -20,7 +20,7 @@ export default function AboutPage() {
               </p>
               <div className="space-y-4 border-l-4 border-primary pl-6 py-2">
                 <p className="text-xl font-medium italic text-gray-800">
-                  &quot;We don&apos;t just provide aid; we build the foundations for self-sufficiency and long-term growth.&quot;
+                  &quot;We don't just provide aid; we build the foundations for self-sufficiency and long-term growth.&quot;
                 </p>
                 <cite className="block text-sm font-bold text-gray-500">— Sarah Jenkins, Founder</cite>
               </div>
@@ -89,13 +89,15 @@ export default function AboutPage() {
           <div className="mx-auto max-w-2xl">
             <Heading level={3} className="mb-6">Join Our Global Team</Heading>
             <p className="mb-10 text-gray-600">
-              Whether you&apos;re looking to donate, volunteer, or partner with us, there&apos;s a place for you at GiveHope. Together, we can build a better world.
+              Whether you're looking to donate, volunteer, or partner with us, there's a place for you at GiveHope. Together, we can build a better world.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/donate" className="w-full sm:w-auto">
                 <Button size="lg" className="w-full">Support Our Mission</Button>
               </Link>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">Contact Us</Button>
+              <Link href="/contact" className="w-full sm:w-auto">
+                <Button variant="outline" size="lg" className="w-full">Contact Us</Button>
+              </Link>
             </div>
           </div>
         </Container>

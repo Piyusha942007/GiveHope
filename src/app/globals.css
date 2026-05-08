@@ -44,7 +44,47 @@ body {
   animation: float 6s ease-in-out infinite;
 }
 
+@keyframes shine {
+  from { left: -100%; }
+  to { left: 100%; }
+}
+
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(35deg);
+  transition: all 0.5s;
+}
+
+.btn-shine:hover::after {
+  animation: shine 0.8s ease-in-out;
+}
+
 /* Global Premium Effects */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
 .card-hover {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   touch-action: manipulation;
@@ -71,7 +111,8 @@ a, button, input, select, textarea {
 }
 
 a:active, button:active {
-  transform: scale(0.95);
+  transform: scale(0.96) translateY(2px);
+  filter: brightness(0.95);
 }
 
 ::selection {

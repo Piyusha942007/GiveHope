@@ -63,7 +63,7 @@ const SuccessContent = () => {
         </svg>
       </div>
       
-      <Heading level={1} className="mb-4">You&apos;re a Hero, {donor}!</Heading>
+      <Heading level={1} className="mb-4">You're a Hero, {donor}!</Heading>
       <p className="mb-8 text-lg text-gray-600">
         Thank you for your generous gift of <span className="font-bold text-primary">${amount}</span> to <span className="font-bold">{program}</span>.
       </p>

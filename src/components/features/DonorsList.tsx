@@ -51,7 +51,7 @@ export const DonorsList = ({ programSlug }: DonorsListProps) => {
       {/* Trust Signal & Mail-in Link */}
       <div className="pt-4 border-t border-border">
         <div className="rounded-xl bg-muted/50 p-4 text-center">
-          <p className="text-sm text-gray-600 mb-2 font-medium">Don&apos;t see your name in the list?</p>
+          <p className="text-sm text-gray-600 mb-2 font-medium">Don't see your name in the list?</p>
           <a 
             href="mailto:hello@givehope.org?subject=Missing Donation Entry"
             className="text-sm font-bold text-primary hover:underline flex items-center justify-center gap-1.5"

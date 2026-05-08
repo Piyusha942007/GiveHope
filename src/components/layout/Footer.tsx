@@ -32,7 +32,7 @@ export const Footer = () => {
             <h4 className="mb-6 text-sm font-bold uppercase tracking-wider text-gray-900">Organization</h4>
             <ul className="space-y-4 text-sm text-gray-600">
               <li><Link href="/about" className="hover:text-primary">About Us</Link></li>
-              <li><Link href="/about#impact" className="hover:text-primary">Our Impact</Link></li>
+              <li><Link href="/contact" className="hover:text-primary">Contact Us</Link></li>
               <li><Link href="/privacy" className="hover:text-primary">Privacy Policy</Link></li>
             </ul>
           </div>
