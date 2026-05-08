@@ -22,9 +22,9 @@ export const LiveDonationTicker = () => {
   };
 
   return (
-    <div className="w-full py-16 bg-white border-t border-border mt-16">
-      <div className="max-w-4xl mx-auto px-6">
-        <div className="bg-gray-50/50 rounded-3xl p-8 md:p-10 border border-gray-100 shadow-sm relative overflow-hidden">
+    <div className="w-full py-10 md:py-16 bg-white border-t border-border mt-12 md:mt-16">
+      <div className="max-w-4xl mx-auto px-4 md:px-6">
+        <div className="bg-gray-50/50 rounded-3xl p-6 md:p-10 border border-gray-100 shadow-sm relative overflow-hidden">
           {/* Subtle accent background */}
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
           

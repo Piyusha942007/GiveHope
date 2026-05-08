@@ -60,8 +60,8 @@ export const HeroSection = () => {
             {/* Main Image */}
             <div className="relative aspect-[4/5] sm:aspect-square overflow-hidden rounded-[2.5rem] shadow-2xl border-8 border-white">
               <img 
-                src="/images/hero-impact.png" 
-                alt="Impactful humanitarian mission" 
+                src="/images/hero-authentic.png" 
+                alt="Authentic community impact at a water pump" 
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

@@ -29,9 +29,10 @@ interface DonationContextType {
 const DonationContext = createContext<DonationContextType | undefined>(undefined);
 
 const MOCK_DONATIONS: Donation[] = [
-  { id: "1", programSlug: "clean-water", donorName: "Sarah Jenkins", amount: 500, isAnonymous: false, timestamp: new Date("2024-04-23") },
-  { id: "2", programSlug: "forest-restoration", donorName: "David Chen", amount: 150, isAnonymous: false, timestamp: new Date("2024-04-23") },
-  { id: "3", programSlug: "education-for-all", donorName: "Elena Rodriguez", amount: 25, isAnonymous: true, timestamp: new Date("2024-04-24") },
+  { id: "1", programSlug: "clean-water-initiative", donorName: "Priyanka K.", amount: 1000, isAnonymous: false, timestamp: new Date(Date.now() - 1000 * 60 * 5) },
+  { id: "2", programSlug: "forest-cleanup", donorName: "Rahul S.", amount: 500, isAnonymous: false, timestamp: new Date(Date.now() - 1000 * 60 * 15) },
+  { id: "3", programSlug: "education-for-all", donorName: "Aman V.", amount: 250, isAnonymous: false, timestamp: new Date(Date.now() - 1000 * 60 * 45) },
+  { id: "4", programSlug: "hunger-relief-program", donorName: "Sneha M.", amount: 150, isAnonymous: false, timestamp: new Date(Date.now() - 1000 * 60 * 120) },
 ];
 
 export const DonationProvider = ({ children }: { children: React.ReactNode }) => {
