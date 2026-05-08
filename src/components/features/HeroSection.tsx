@@ -63,6 +63,9 @@ export const HeroSection = () => {
                 src="/images/hero-authentic.png" 
                 alt="Authentic community impact at a water pump" 
                 className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                loading="eager"
+                // @ts-ignore
+                fetchpriority="high"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </div>

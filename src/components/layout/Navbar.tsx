@@ -17,6 +17,13 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLogoClick = (e: React.MouseEvent) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   const navLinks = [
     { name: "Programs", href: "/programs" },
     { name: "About", href: "/about" },
@@ -41,7 +48,11 @@ export const Navbar = () => {
           <div className="flex h-14 items-center justify-between">
             {/* Logo & Trust Signal */}
             <div className="flex items-center gap-6">
-              <Link href="/" className="group flex items-center gap-3">
+              <Link 
+                href="/" 
+                className="group flex items-center gap-3"
+                onClick={handleLogoClick}
+              >
                 <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white transition-transform group-hover:scale-110 shadow-lg shadow-green-500/20">
                   <div className="relative flex items-center justify-center w-full h-full">
                     {/* Drop */}
